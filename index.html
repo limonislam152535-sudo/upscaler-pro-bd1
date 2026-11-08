@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<title>Upscaler Pro</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top"><h1>Upscaler Pro</h1><p>Bulk image upscaling that runs entirely on the cloud server.</p></header>
+<main>
+  <section id="drop" class="drop" tabindex="0" role="button" aria-label="Add images">
+    <strong>Drop images here or click to choose</strong>
+    <span>JPG, PNG, WEBP · select 150–200+ at once</span>
+    <input id="picker" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" multiple hidden>
+  </section>
+  <p id="skipped" class="skipped" hidden></p>
+
+  <section class="panel">
+    <h2>Settings</h2>
+    <div class="settings">
+      <label>Upscaling factor<select id="scale"><option value="2">2X</option><option value="4" selected>4X</option><option value="8">8X (AI 4X + resize)</option></select></label>
+      <label>Quality mode<select id="model"><option value="quality" selected>Best quality (photos)</option><option value="anime">Illustration / anime</option><option value="fast">Fast</option></select></label>
+      <label>Output format<select id="format"><option value="jpg" selected>JPG</option><option value="png">PNG</option><option value="webp">WEBP</option></select></label>
+      <label>JPEG / WEBP quality: <b id="qv">95</b>%<input id="quality" type="range" min="70" max="100" value="95"></label>
+      <label>DPI metadata<select id="dpi"><option>72</option><option>150</option><option selected>300</option><option>600</option></select></label>
+      <label>Max file size (MB)<input id="maxmb" type="number" min="1" value="50"></label>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Live dashboard</h2>
+    <div class="stats">
+      <div><b id="s-total">0</b>Total</div><div><b id="s-up">0</b>Uploaded</div><div><b id="s-proc">0</b>Processing</div>
+      <div><b id="s-done">0</b>Completed</div><div><b id="s-fail">0</b>Failed</div><div><b id="s-pend">0</b>Pending</div>
+    </div>
+    <div class="bar big"><i id="overall"></i></div>
+    <p class="line"><span id="pct">0%</span><span id="current">Idle</span><span id="speed">–</span><span id="eta">–</span></p>
+  </section>
+
+  <section class="panel">
+    <div class="toolbar">
+      <p id="totals">0 images · 0 KB</p>
+      <button id="start" class="primary" disabled>Start upscaling</button>
+      <button id="zip" disabled>Download completed as ZIP</button>
+      <button id="csv" disabled>Metadata CSV</button>
+      <button id="clear" disabled>Clear all</button>
+    </div>
+    <div id="grid" class="grid"></div>
+    <p id="empty" class="empty">No images yet. Add some above to get started.</p>
+  </section>
+</main>
+<script src="js/app.js"></script>
+</body>
+</html>
